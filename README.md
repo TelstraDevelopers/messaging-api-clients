@@ -234,13 +234,12 @@ var controller = lib.SMSController;
 
 
 ```javascript
-function createSendMessage(authorization, payload, callback)
+function createSendMessage(payload, callback)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| authorization |  ``` Required ```  | A header in the format 'Bearer {access_token}' - get the token by using the OAuth API with the scope 'SMS' |
 | payload |  ``` Required ```  | A JSON or XML payload containing the recipient's phone number and text message.
 The recipient number should be in the format '04xxxxxxxx' where x is a digit |
 
@@ -250,10 +249,9 @@ The recipient number should be in the format '04xxxxxxxx' where x is a digit |
 
 ```javascript
 
-    var authorization = 'Authorization';
     var payload = new SendSMSRequest({"key":"value"});
 
-    controller.createSendMessage(authorization, payload, function(error, response, context) {
+    controller.createSendMessage(payload, function(error, response, context) {
 
     
 	});
@@ -283,13 +281,12 @@ The recipient number should be in the format '04xxxxxxxx' where x is a digit |
 
 
 ```javascript
-function getMessageStatus(authorization, messageId, callback)
+function getMessageStatus(messageId, callback)
 ```
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| authorization |  ``` Required ```  | Authorization header in the format 'Bearer {access_token}' - get the token by using the OAuth API with the scope 'SMS' |
 | messageId |  ``` Required ```  | Unique identifier of a message - it is the value returned from a previous POST call to https://api.telstra.com/v2/messages/sms |
 
 
@@ -298,10 +295,9 @@ function getMessageStatus(authorization, messageId, callback)
 
 ```javascript
 
-    var authorization = 'Authorization';
     var messageId = 'messageId';
 
-    controller.getMessageStatus(authorization, messageId, function(error, response, context) {
+    controller.getMessageStatus(messageId, function(error, response, context) {
 
     
 	});
@@ -331,23 +327,15 @@ function getMessageStatus(authorization, messageId, callback)
 
 
 ```javascript
-function retrieveMessages(authorization, callback)
+function retrieveMessages(callback)
 ```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| authorization |  ``` Required ```  | Authorization header in the format 'Bearer {access_token}' - get the token by using the OAuth API with the scope 'SMS' |
-
-
 
 #### Example Usage
 
 ```javascript
 
-    var authorization = 'Authorization';
 
-    controller.retrieveMessages(authorization, function(error, response, context) {
+    controller.retrieveMessages(function(error, response, context) {
 
     
 	});
